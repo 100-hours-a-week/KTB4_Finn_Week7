@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="../css/signup.css" />
+  <script defer src="../js/signup.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a class="back-button" href="./login.html" aria-label="이전 페이지">&lt;</a>
+    <h1>
+      <a href="./index.html">아무 말 대잔치</a>
+    </h1>
+  </header>
+
+  <main class="main">
+    <section class="signup-container">
+      <h2>회원가입</h2>
+
+      <form id="signup-form" novalidate>
+        <div class="profile-section">
+          <label>프로필 사진</label>
+          <p id="profile-error" class="helper-text"></p>
+
+          <label for="profile-img" class="profile-upload">
+            <span>+</span>
+          </label>
+          <input id="profile-img" type="file" accept="image/*" hidden />
+        </div>
+
+        <div class="form-group">
+          <label for="email">이메일*</label>
+          <input id="email" type="email" placeholder="이메일을 입력하세요" />
+          <p id="email-error" class="helper-text"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="password">비밀번호*</label>
+          <input id="password" type="password" placeholder="비밀번호를 입력하세요" />
+          <p id="password-error" class="helper-text"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="password-check">비밀번호 확인*</label>
+          <input id="password-check" type="password" placeholder="비밀번호를 한번 더 입력하세요" />
+          <p id="password-check-error" class="helper-text"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="nickname">닉네임*</label>
+          <input id="nickname" type="text" placeholder="닉네임을 입력하세요" />
+          <p id="nickname-error" class="helper-text"></p>
+        </div>
+
+        <button class="signup-button" type="submit">회원가입</button>
+      </form>
+
+      <a class="login-link" href="./login.html">로그인하러 가기</a>
+    </section>
+  </main>
+</body>
+</html>

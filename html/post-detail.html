@@ -1,0 +1,100 @@
+<!--
+삭제 모달 추가 필요
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시글 상세</title>
+
+  <link rel="stylesheet" href="../css/post-detail.css" />
+
+  <script defer src="../js/post-detail.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a class="back-button" href="./index.html" aria-label="이전 페이지">&lt;</a>
+    <h1>
+      <a href="./index.html">아무 말 대잔치</a>
+    </h1>
+
+    <div class="profile-menu">
+      <img
+        id="header-profile-img"
+        class="profile-img"
+        src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
+        alt="프로필 이미지"
+      />
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="post-detail">
+      <section class="post-header">
+        <h2 id="post-title"></h2>
+
+        <div class="post-meta-row">
+          <div class="author-info">
+            <img id="post-author-img" class="author-img" src="" alt="작성자 프로필" />
+            <strong id="post-author"></strong>
+            <time id="post-created-at"></time>
+          </div>
+
+          <div class="post-actions">
+            <button id="post-edit-button" type="button">수정</button>
+            <button id="post-delete-button" type="button">삭제</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="post-body">
+        <img id="post-image" class="post-image" src="https://png.pngtree.com/thumb_back/fh260/background/20240412/pngtree-happy-small-dog-is-running-on-a-grass-in-park-in-image_15655854.jpg" alt="게시글 이미지" />
+        <p id="post-content"></p>
+      </section>
+
+      <section class="post-stats">
+        <div>
+          <strong id="like-count">0</strong>
+          <span>좋아요수</span>
+        </div>
+        <div>
+          <strong id="view-count">0</strong>
+          <span>조회수</span>
+        </div>
+        <div>
+          <strong id="comment-count">0</strong>
+          <span>댓글</span>
+        </div>
+      </section>
+    </article>
+
+    <section class="comment-write-box">
+      <textarea id="comment-input" placeholder="댓글을 남겨주세요!"></textarea>
+
+      <div class="comment-submit-row">
+        <button id="comment-submit-button" type="button">댓글 등록</button>
+      </div>
+    </section>
+
+    <section id="comment-list" class="comment-list"></section>
+  </main>
+
+  <template id="comment-template">
+    <article class="comment-item">
+      <div class="comment-top">
+        <img class="author-img comment-author-img" src="" alt="댓글 작성자 프로필" />
+        <strong class="comment-author"></strong>
+        <time class="comment-created-at"></time>
+
+        <div class="comment-actions">
+          <button type="button" class="comment-edit-button">수정</button>
+          <button type="button" class="comment-delete-button">삭제</button>
+        </div>
+      </div>
+
+      <p class="comment-content"></p>
+    </article>
+  </template>
+</body>
+</html>

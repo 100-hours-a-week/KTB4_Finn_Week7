@@ -1,0 +1,126 @@
+@import url("./common.css");
+
+.main {
+  min-height: calc(100vh - 100px);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 120px 20px 60px;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 360px;
+}
+
+.signup-container h2 {
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.profile-section {
+  margin-bottom: 14px;
+}
+
+.profile-section > label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile-upload {
+  width: 120px;
+  height: 120px;
+  margin: 8px auto 0;
+
+  border-radius: 50%;
+  background-color: #c9c9c9;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.profile-upload span {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.form-group input {
+  width: 100%;
+  height: 34px;
+
+  padding: 0 10px;
+
+  border: 1px solid #555;
+  border-radius: 4px;
+
+  background-color: #f4f5f7;
+  font-size: 13px;
+}
+
+.helper-text {
+  min-height: 16px;
+  margin-top: 4px;
+
+  color: red;
+  font-size: 12px;
+}
+
+.signup-button {
+  width: 100%;
+  height: 36px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: #aca0eb;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-link {
+  display: block;
+  margin-top: 12px;
+
+  text-align: center;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+}
+
+@media (max-height: 760px) {
+  .main {
+    padding-top: 40px;
+  }
+
+  .profile-upload {
+    width: 100px;
+    height: 100px;
+  }
+
+  .signup-container h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+}

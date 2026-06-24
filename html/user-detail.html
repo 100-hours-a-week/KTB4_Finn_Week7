@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원정보수정</title>
+
+  <link rel="stylesheet" href="../css/user-detail.css" />
+
+  <script defer src="../js/user-edit.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>
+      <a href="./index.html">아무 말 대잔치</a>
+    </h1>
+
+    <div class="profile-menu">
+      <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기">
+        <img
+          id="header-profile-img"
+          class="profile-img"
+          src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
+          alt="프로필 이미지"
+        />
+      </button>
+
+      <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴">
+        <a href="./user-detail.html">회원정보수정</a>
+        <a href="./password-edit.html">비밀번호수정</a>
+        <button id="logout-button" type="button">로그아웃</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="user-edit-container">
+      <h2>회원정보수정</h2>
+
+      <form id="user-edit-form" novalidate>
+        <section class="profile-section">
+          <label>프로필 사진*</label>
+
+          <label for="profile-image-input" class="profile-edit-image">
+            <img id="profile-preview" src="" alt="프로필 미리보기" />
+            <span>변경</span>
+          </label>
+
+          <input id="profile-image-input" type="file" accept="image/*" hidden />
+        </section>
+
+        <div class="form-group">
+          <label>이메일</label>
+          <p id="user-email" class="email-text"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="nickname">닉네임</label>
+          <input id="nickname" type="text" placeholder="닉네임을 입력하세요" />
+          <p id="nickname-error" class="helper-text"></p>
+        </div>
+
+        <button id="edit-submit-button" class="edit-submit-button" type="submit">
+          수정하기
+        </button>
+
+        <button id="withdraw-button" class="withdraw-button" type="button">
+          회원 탈퇴
+        </button>
+      </form>
+
+      <button id="toast-button" class="toast-button" type="button">
+        수정완료
+      </button>
+    </section>
+  </main>
+</body>
+</html>
