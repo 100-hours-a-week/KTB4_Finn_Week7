@@ -1,5 +1,6 @@
 import {getPosts} from "../api/post-api.js";
 import { formatDateTime } from "../utils/date-format.js";
+import { setProfileImage } from "../utils/image.js";
 
 const postListContainer = document.getElementById("post-list-container");
 const postCardTemplate = document.getElementById("post-card-template");
@@ -23,7 +24,7 @@ const renderPosts = (posts) => {
         postElement.querySelector(".post-comment-count").textContent = `댓글 ${post.commentCount}`;
         postElement.querySelector(".post-view-count").textContent = `조회수 ${post.viewCount}`;
         postElement.querySelector(".post-created-at").textContent = formatDateTime(post.createdAt);
-        postElement.querySelector(".post-author-img").src = post.profileImg;
+        setProfileImage(postElement.querySelector(".post-author-img"), post.profileImg);
         postElement.querySelector(".post-author-nickname").textContent = post.nickname;
 
         postListContainer.appendChild(postElement);

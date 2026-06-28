@@ -38,12 +38,19 @@
 
   border-radius: 50%;
   background-color: #c9c9c9;
+  overflow: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
+}
+
+.profile-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profile-upload span {

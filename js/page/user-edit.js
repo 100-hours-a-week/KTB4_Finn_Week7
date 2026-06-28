@@ -1,8 +1,11 @@
 import { getUserInfo, updateUser,withdraw } from "../api/user-api.js"
+import { registerUserProfile } from "../api/image-api.js";
+import { setProfileImage } from "../utils/image.js";
 
 let userInfo = null;
 
 const profileImg = document.getElementById("profile-preview");
+const profileImgInput = document.getElementById("profile-image-input");
 const email = document.getElementById("user-email");
 const nicknameInput = document.getElementById("nickname");
 const nicknameHelper = document.getElementById("nickname-error");
@@ -14,6 +17,7 @@ const withdrawConfirmButton = document.getElementById("withdraw-confirm-button")
 const editSuccessToast = document.getElementById("edit-success-toast");
 const editMessageToast = document.getElementById("edit-message");
 let toastTimerId = null;
+let profilePreviewUrl = null;
 const MAX_NICKNAME_LENGTH = 10;
 
 function openWithdrawModal() {
@@ -56,11 +60,62 @@ function updateEditButtonState() {
     editButton.disabled = !isUserEditFormValid();
 }
 
+function clearProfilePreviewUrl() {
+    if (profilePreviewUrl) {
+        URL.revokeObjectURL(profilePreviewUrl);
+        profilePreviewUrl = null;
+    }
+}
+
+async function getUpdatedProfileImg() {
+    const file = profileImgInput.files[0];
+
+    if (!file) {
+        return userInfo?.profileImg || null;
+    }
+
+    const response = await registerUserProfile(file);
+    return response.data.imageUrl;
+}
+
+function buildUserUpdatePayload(nickname, profileImgValue) {
+    return {
+        nickname,
+        profileImg: profileImgValue
+    };
+}
+
+function applyUpdatedUser(nickname, profileImgValue) {
+    userInfo = {
+        ...userInfo,
+        nickname,
+        profileImg: profileImgValue
+    };
+
+    setProfileImage(profileImg, profileImgValue);
+    profileImgInput.value = "";
+    clearProfilePreviewUrl();
+}
+
 nicknameInput.addEventListener("input", updateEditButtonState);
+
+profileImgInput.addEventListener("change", () => {
+    const file = profileImgInput.files[0];
+
+    clearProfilePreviewUrl();
+
+    if (!file) {
+        setProfileImage(profileImg, userInfo?.profileImg);
+        return;
+    }
+
+    profilePreviewUrl = URL.createObjectURL(file);
+    profileImg.src = profilePreviewUrl;
+});
+
 updateEditButtonState();
 
 editButton.addEventListener("click", async () => {
-    const profileImgValue = profileImg.src;
     const nickname = nicknameInput.value.trim();
 
     updateEditButtonState();
@@ -75,13 +130,12 @@ editButton.addEventListener("click", async () => {
         return;
     }
 
-    const userData = {
-        nickname: nickname,
-        profileImg: profileImgValue
-    }
-
     try{
+        const profileImgValue = await getUpdatedProfileImg();
+        const userData = buildUserUpdatePayload(nickname, profileImgValue);
+
         await updateUser(userData);
+        applyUpdatedUser(nickname, profileImgValue);
         showEditToast("수정완료");
 
     }catch(error){
@@ -119,7 +173,7 @@ const init = async () => {
         userInfo = response.data;
 
         console.log("userInfo: ", userInfo);
-        profileImg.src = userInfo.profileImg;
+        setProfileImage(profileImg, userInfo.profileImg);
         email.textContent = userInfo.email;
         nicknameInput.value=userInfo.nickname;
         updateEditButtonState();

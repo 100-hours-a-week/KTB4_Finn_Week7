@@ -1,16 +1,23 @@
 // 회원가입 화면 전용 스크립트가 필요할 때 이 파일에서 확장합니다.
 import {signup} from "../api/user-api.js";
+import { registerUserProfile } from "../api/image-api.js";
 
 const signupButton = document.getElementById("signup-button");
 const nicknameInput = document.getElementById("nickname");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const passwordCheckInput = document.getElementById("password-check");
+const profileImgInput = document.getElementById("profile-img");
+const profilePreview = document.getElementById("profile-preview");
+const profileUploadIcon = document.querySelector(".profile-upload span");
+
 const emailError = document.getElementById("email-error");
 const passwordCheckError = document.getElementById("password-check-error");
 const nicknameError = document.getElementById("nickname-error");
+const profileError = document.getElementById("profile-error");
 
 const MAX_NICKNAME_LENGTH = 10;
+let profilePreviewUrl = null;
 
 function isSignupFormValid() {
     const nickname = nicknameInput.value.trim();
@@ -49,6 +56,27 @@ emailInput.addEventListener("input", () => {
     updateSignupButtonState();
 });
 
+profileImgInput.addEventListener("change", () => {
+    const file = profileImgInput.files[0];
+
+    if (profilePreviewUrl) {
+        URL.revokeObjectURL(profilePreviewUrl);
+        profilePreviewUrl = null;
+    }
+
+    if (!file) {
+        profilePreview.src = "";
+        profilePreview.hidden = true;
+        profileUploadIcon.hidden = false;
+        return;
+    }
+
+    profilePreviewUrl = URL.createObjectURL(file);
+    profilePreview.src = profilePreviewUrl;
+    profilePreview.hidden = false;
+    profileUploadIcon.hidden = true;
+});
+
 updateSignupButtonState();
 
 function normalizeErrorCode(code) {
@@ -82,6 +110,17 @@ function isEmailDuplicateError(error) {
     );
 }
 
+async function uploadProfileImageIfSelected() {
+    const file = profileImgInput.files[0];
+
+    if (!file) {
+        return null;
+    }
+
+    const response = await registerUserProfile(file);
+    return response.data.imageUrl;
+}
+
 signupButton.addEventListener("click", async () => {
     updateSignupButtonState();
 
@@ -89,10 +128,22 @@ signupButton.addEventListener("click", async () => {
         return;
     }
 
+    let profileImgUrl = null;
+
+    try {
+        profileError.textContent = "";
+        profileImgUrl = await uploadProfileImageIfSelected();
+    } catch (error) {
+        profileError.textContent = "이미지 등록에 실패했습니다.";
+        console.log("이미지 등록 실패: ", error);
+        return;
+    }
+
     const userData = {
         nickname: nicknameInput.value.trim(),
         email: emailInput.value.trim(),
-        password: passwordInput.value
+        password: passwordInput.value,
+        profileImg: profileImgUrl
     };
 
     try {

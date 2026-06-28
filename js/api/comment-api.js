@@ -6,7 +6,7 @@ export function getCommentByPostId(postId){
 
 export function registerComment(commentInfo){
     const contentInfo = {
-        content : commentInfo.content
+        comment : commentInfo.content
     }
     return apiRequest(`/posts/${commentInfo.postId}/comments`,{
         method: `POST`,

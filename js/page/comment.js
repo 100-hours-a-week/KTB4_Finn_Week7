@@ -1,5 +1,6 @@
 import { registerComment, getCommentByPostId, updateComment, deleteComment } from "../api/comment-api.js";
 import { formatDateTime } from "../utils/date-format.js";
+import { setProfileImage } from "../utils/image.js";
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("postId");
@@ -67,7 +68,6 @@ commentDeleteConfirmButton.addEventListener("click", async () => {
     }
     try {
         await deleteComment(selectedDeleteCommentId);
-        console.log("댓글 삭제 성공");
         window.location.href = "/html/post-detail.html?postId=" + postId;
     } catch (error) {
         console.log("댓글 삭제 실패: ", error);
@@ -81,7 +81,7 @@ function renderCommentList(comments) {
   comments.forEach((comment) => {
     const commentElement = commentListTemplate.content.cloneNode(true);
 
-    commentElement.querySelector(".comment-author-img").src = comment.profileImg;
+    setProfileImage(commentElement.querySelector(".comment-author-img"), comment.profileImg);
     commentElement.querySelector(".comment-author").textContent = comment.nickname;
     commentElement.querySelector(".comment-created-at").textContent = formatDateTime(comment.createdAt);
     commentElement.querySelector(".comment-content").textContent = comment.content;

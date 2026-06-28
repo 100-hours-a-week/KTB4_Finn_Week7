@@ -2,11 +2,11 @@
 import {deletePost, getPostById} from "../api/post-api.js";
 import {likePost, unlikePost} from "../api/like-api.js";
 import { formatDateTime } from "../utils/date-format.js";
+import { setOptionalImage, setProfileImage } from "../utils/image.js";
 
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("postId");
-console.log("postId:", postId);
 
 const likeButton = document.getElementById("post-like-button");
 const likeCount = document.getElementById("like-count");
@@ -84,6 +84,7 @@ function renderPostDetail(post) {
     likeCount.textContent = post.likeCount;
     document.getElementById("comment-count").textContent = post.commentCount;
     document.getElementById("view-count").textContent = post.viewCount;
+    setOptionalImage(document.getElementById("post-image"), post.contentImg);
     
 
     document.getElementById("post-edit-button").style.display = post.isMine ? "inline-block" : "none";
@@ -92,7 +93,7 @@ function renderPostDetail(post) {
 
     
     document.getElementById("post-author").textContent = post.nickname;
-    document.getElementById("post-author-img").src = post.profileImg;
+    setProfileImage(document.getElementById("post-author-img"), post.profileImg);
 
     const button = document.getElementById("post-like-button");
     currentLikeId = post.like !== null ? post.like.id : null;
@@ -105,7 +106,6 @@ const init = async () => {
    const response = await getPostById(postId);
 
    const postInfo = response.data;
-   console.log(postInfo);
 
    renderPostDetail(postInfo);
 

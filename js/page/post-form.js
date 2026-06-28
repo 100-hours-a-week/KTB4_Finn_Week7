@@ -1,5 +1,6 @@
 // 게시글 작성/수정 화면 전용 스크립트가 필요할 때 이 파일에서 확장합니다.
 import { createPost, getPostById, updatePost } from "../api/post-api.js";
+import { registerPostImage } from "../api/image-api.js";
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("postId");
@@ -7,6 +8,7 @@ const isUpdateMode = postId !== null;
 
 const titleInput = document.getElementById("post-title");
 const contentInput = document.getElementById("post-content");
+const fileInput = document.getElementById("post-image");
 const submitButton = document.getElementById("submit-button");
 
 const titleHelper = document.getElementById("title-error");
@@ -29,6 +31,17 @@ function limitTitleLength() {
   if (titleInput.value.length > MAX_TITLE_LENGTH) {
     titleInput.value = titleInput.value.slice(0, MAX_TITLE_LENGTH);
   }
+}
+
+async function uploadPostImageIfSelected() {
+  const file = fileInput.files[0];
+
+  if (!file) {
+    return null;
+  }
+
+  const response = await registerPostImage(file);
+  return response.data.imageUrl;
 }
 
 titleInput.addEventListener("input", () => {
@@ -86,9 +99,19 @@ submitButton.addEventListener("click", async () => {
     return;
   }
 
+  let contentImg = null;
+
+  try {
+    contentImg = await uploadPostImageIfSelected();
+  } catch (error) {
+    console.log("이미지등록 실패: ", error);
+    return;
+  }
+
   const postData = {
     title,
     content,
+    contentImg
   };
 
   if (isUpdateMode) {

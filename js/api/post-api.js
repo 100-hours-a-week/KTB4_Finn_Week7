@@ -1,8 +1,7 @@
 import {apiRequest} from "./common.js";
 
 export function getPosts(){
-    const response = apiRequest("/posts");
-    return response;
+    return apiRequest("/posts");;
 }
 
 export function getPostById(postId){
