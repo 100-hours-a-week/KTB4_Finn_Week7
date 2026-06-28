@@ -10,7 +10,9 @@
 
   <link rel="stylesheet" href="../css/post-detail.css" />
 
-  <script defer src="../js/post-detail.js"></script>
+  <script type="module" src="../js/page/post-detail.js"></script>
+  <script type="module" src="../js/page/comment.js"></script>
+  <script type="module" src="../js/page/header.js"></script>
 </head>
 <body>
   <header class="header">
@@ -20,12 +22,20 @@
     </h1>
 
     <div class="profile-menu">
-      <img
-        id="header-profile-img"
-        class="profile-img"
-        src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
-        alt="프로필 이미지"
-      />
+      <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기">
+        <img
+          id="header-profile-img"
+          class="profile-img"
+          src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
+          alt="프로필 이미지"
+        />
+      </button>
+
+      <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
+        <a href="./user-detail.html">회원정보수정</a>
+        <a href="./password-edit.html">비밀번호수정</a>
+        <button id="logout-button" type="button">로그아웃</button>
+      </nav>
     </div>
   </header>
 
@@ -54,10 +64,10 @@
       </section>
 
       <section class="post-stats">
-        <div>
+        <button id="post-like-button" class="like-count-button" type="button">
           <strong id="like-count">0</strong>
           <span>좋아요수</span>
-        </div>
+        </button>
         <div>
           <strong id="view-count">0</strong>
           <span>조회수</span>
@@ -77,24 +87,59 @@
       </div>
     </section>
 
-    <section id="comment-list" class="comment-list"></section>
+    <div id="comment-list-container">
+
+    </div>
   </main>
 
   <template id="comment-template">
-    <article class="comment-item">
-      <div class="comment-top">
-        <img class="author-img comment-author-img" src="" alt="댓글 작성자 프로필" />
-        <strong class="comment-author"></strong>
-        <time class="comment-created-at"></time>
+  <article class="comment-item">
+    <div class="comment-top">
+      <img class="author-img comment-author-img" src="" alt="댓글 작성자 프로필" />
+      <strong class="comment-author"></strong>
+      <time class="comment-created-at"></time>
 
-        <div class="comment-actions">
-          <button type="button" class="comment-edit-button">수정</button>
-          <button type="button" class="comment-delete-button">삭제</button>
-        </div>
+      <div class="comment-actions">
+        <button type="button" class="comment-edit-button">수정</button>
+        <button type="button" class="comment-delete-button">삭제</button>
       </div>
+    </div>
 
-      <p class="comment-content"></p>
-    </article>
+    <p class="comment-content"></p>
+
+    <div class="comment-edit-box" hidden>
+      <textarea class="comment-edit-input"></textarea>
+
+      <div class="comment-edit-submit-row">
+        <button type="button" class="comment-edit-cancel-button">취소</button>
+        <button type="button" class="comment-edit-submit-button">댓글 수정</button>
+      </div>
+    </div>
+  </article>
   </template>
+
+  <div id="comment-delete-modal" class="modal-overlay" hidden>
+    <div class="delete-modal">
+      <h2>댓글을 삭제하시겠습니까?</h2>
+      <p>삭제한 내용은 복구 할 수 없습니다.</p>
+
+      <div class="delete-modal-actions">
+        <button id="comment-delete-cancel-button" class="delete-modal-cancel-button" type="button">취소</button>
+        <button id="comment-delete-confirm-button" class="delete-modal-confirm-button" type="button">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="post-delete-modal" class="modal-overlay" hidden>
+    <div class="delete-modal">
+      <h2>게시글을 삭제하시겠습니까?</h2>
+      <p>삭제한 내용은 복구 할 수 없습니다.</p>
+
+      <div class="delete-modal-actions">
+        <button id="post-delete-cancel-button" class="delete-modal-cancel-button" type="button">취소</button>
+        <button id="post-delete-confirm-button" class="delete-modal-confirm-button" type="button">확인</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

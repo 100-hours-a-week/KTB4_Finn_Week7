@@ -99,10 +99,12 @@
   margin-bottom: 28px;
 }
 
-.post-stats div {
+.post-stats div,
+.post-stats button {
   width: 110px;
   height: 70px;
 
+  border: none;
   border-radius: 12px;
   background-color: #d9d9d9;
 
@@ -110,6 +112,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.post-stats button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .post-stats strong {
@@ -124,6 +131,7 @@
 
 .comment-write-box {
   margin-top: 18px;
+  margin-bottom: 24px;
   border-radius: 8px;
   background-color: white;
   overflow: hidden;
@@ -164,13 +172,18 @@
   border: none;
   border-radius: 16px;
 
-  background-color: #aca0eb;
+  background-color: #7F6AEE;
   color: white;
 
   font-size: 14px;
   font-weight: 700;
 
   cursor: pointer;
+}
+
+.comment-submit-row button:disabled {
+  background-color: #ACA0EB;
+  cursor: default;
 }
 
 .comment-list {
@@ -199,4 +212,134 @@
   padding-left: 46px;
 
   font-size: 14px;
+}
+
+.comment-edit-box {
+  margin-top: 12px;
+  margin-left: 46px;
+
+  border-radius: 8px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.comment-edit-input {
+  width: 100%;
+  height: 80px;
+
+  padding: 16px;
+
+  border: none;
+  resize: none;
+
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.comment-edit-input:focus {
+  outline: none;
+}
+
+.comment-edit-submit-row {
+  height: 44px;
+  border-top: 1px solid #ddd;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+
+  padding-right: 8px;
+}
+
+.comment-edit-submit-row button {
+  height: 36px;
+  padding: 0 14px;
+
+  border: none;
+  border-radius: 16px;
+
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.comment-edit-submit-button {
+  width: 110px;
+
+  background-color: #7F6AEE !important;
+  color: white;
+}
+
+.comment-edit-submit-button:disabled {
+  background-color: #ACA0EB !important;
+  cursor: default;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.delete-modal {
+  width: 420px;
+  padding: 44px 40px;
+
+  border-radius: 12px;
+  background-color: white;
+
+  text-align: center;
+}
+
+.delete-modal h2 {
+  margin-bottom: 20px;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.delete-modal p {
+  margin-bottom: 28px;
+
+  font-size: 18px;
+}
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.delete-modal-actions button {
+  width: 132px;
+  height: 46px;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.delete-modal-cancel-button {
+  background-color: #242424;
+  color: white;
+}
+
+.delete-modal-confirm-button {
+  background-color: #c4a5fa;
+  color: #111;
 }

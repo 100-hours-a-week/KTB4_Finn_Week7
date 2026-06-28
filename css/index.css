@@ -37,13 +37,26 @@
   border: none;
   border-radius: 12px;
 
-  background-color: #aca0eb;
+  background-color: #ACA0EB;
   color: white;
 
   font-size: 14px;
   font-weight: 700;
 
   cursor: pointer;
+}
+
+.write-button:hover {
+  background-color: #7F6AEE;
+}
+
+.empty-post-message {
+  padding: 60px 0;
+
+  text-align: center;
+  color: #777;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .post-card {

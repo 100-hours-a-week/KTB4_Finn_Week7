@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>게시판</title>
   <link rel="stylesheet" href="../css/index.css" />
-</head>
+  <script type="module" src="../js/page/index.js"></script>
+  <script type="module" src="../js/page/header.js"></script>
+</head> 
 <body>
   <header class="header">
     <h1>
@@ -13,12 +15,20 @@
     </h1>
 
     <div class="profile-menu">
-      <img
-        id="header-profile-img"
-        class="profile-img"
-        src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
-        alt="프로필 이미지"
-      />
+      <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기">
+        <img
+          id="header-profile-img"
+          class="profile-img"
+          src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
+          alt="프로필 이미지"
+        />
+      </button>
+
+      <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
+        <a href="./user-detail.html">회원정보수정</a>
+        <a href="./password-edit.html">비밀번호수정</a>
+        <button id="logout-button" type="button">로그아웃</button>
+      </nav>
     </div>
   </header>
 
@@ -33,24 +43,31 @@
         <a class="write-button" href="./post-create.html">게시글 작성</a>
       </div>
 
-      <article class="post-card">
+      <div id="post-list-container"></div>
+    </section>
+  </main>
+
+  <template id="post-card-template">
+    <article class="post-card">
+      <a class="post-link" href="">
         <div class="post-content">
-          <h3>제목 1</h3>
+          <h3 class="post-title"></h3>
           <div class="post-info">
-            <span>좋아요 0</span>
-            <span>댓글 0</span>
-            <span>조회수 0</span>
-            <time>2021-01-01 00:00:00</time>
+            <span class="post-like-count"></span>
+            <span class="post-comment-count"></span>
+            <span class="post-view-count"></span>
+            <time class="post-created-at"></time>
           </div>
         </div>
 
         <div class="post-author">
           <div class="author-img">
+            <img class="post-author-img" src="" alt="Author Image" />
           </div>
-          <strong>더미 작성자 1</strong>
+          <strong class="post-author-nickname"></strong>
         </div>
-      </article>
-    </section>
-  </main>
+      </a>
+    </article>
+  </template>
 </body>
 </html>

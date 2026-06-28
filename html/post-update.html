@@ -6,7 +6,8 @@
   <title>게시글 작성</title>
   <link rel="stylesheet" href="../css/post-form.css" />
 
-  <script defer src="../js/post-form.js"></script>
+  <script type="module" src="../js/page/post-form.js"></script>
+  <script type="module" src="../js/page/header.js"></script>
 </head>
 <body>
   <header class="header">
@@ -16,12 +17,20 @@
     </h1>
 
     <div class="profile-menu">
-      <img
-        id="header-profile-img"
-        class="profile-img"
-        src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
-        alt="프로필 이미지"
-      />
+      <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기">
+        <img
+          id="header-profile-img"
+          class="profile-img"
+          src="https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-brown-and-white-dog-running-near-grass-image_2681708.jpg"
+          alt="프로필 이미지"
+        />
+      </button>
+
+      <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
+        <a href="./user-detail.html">회원정보수정</a>
+        <a href="./password-edit.html">비밀번호수정</a>
+        <button id="logout-button" type="button">로그아웃</button>
+      </nav>
     </div>
   </header>
 
@@ -55,7 +64,7 @@
           <input id="post-image" type="file" accept="image/*" />
         </div>
 
-        <button id="submit-button" class="submit-button" type="submit">
+        <button id="submit-button" class="submit-button" type = "button" >
           완료
         </button>
       </form>

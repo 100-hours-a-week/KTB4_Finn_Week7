@@ -7,7 +7,8 @@
 
   <link rel="stylesheet" href="../css/user-detail.css" />
 
-  <script defer src="../js/user-edit.js"></script>
+  <script type="module" src="../js/page/user-edit.js"></script>
+  <script type="module" src="../js/page/header.js"></script>
 </head>
 <body>
   <header class="header">
@@ -25,7 +26,7 @@
         />
       </button>
 
-      <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴">
+      <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
         <a href="./user-detail.html">회원정보수정</a>
         <a href="./password-edit.html">비밀번호수정</a>
         <button id="logout-button" type="button">로그아웃</button>
@@ -42,7 +43,7 @@
           <label>프로필 사진*</label>
 
           <label for="profile-image-input" class="profile-edit-image">
-            <img id="profile-preview" src="" alt="프로필 미리보기" />
+            <img id="profile-preview" src=""  />
             <span>변경</span>
           </label>
 
@@ -60,7 +61,7 @@
           <p id="nickname-error" class="helper-text"></p>
         </div>
 
-        <button id="edit-submit-button" class="edit-submit-button" type="submit">
+        <button id="edit-submit-button" class="edit-submit-button" type="button">
           수정하기
         </button>
 
@@ -69,10 +70,22 @@
         </button>
       </form>
 
-      <button id="toast-button" class="toast-button" type="button">
-        수정완료
-      </button>
+      <div id="edit-success-toast" class="toast-message" role="status" hidden>
+          <p id="edit-message"></p>
+      </div>
     </section>
   </main>
+
+  <div id="withdraw-modal" class="modal-overlay" hidden>
+    <div class="withdraw-modal">
+      <h2>회원탈퇴 하시겠습니까?</h2>
+      <p>작성된 게시글과 댓글은 삭제됩니다.</p>
+
+      <div class="withdraw-modal-actions">
+        <button id="withdraw-cancel-button" class="withdraw-modal-cancel-button" type="button">취소</button>
+        <button id="withdraw-confirm-button" class="withdraw-modal-confirm-button" type="button">확인</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

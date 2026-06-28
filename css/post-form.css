@@ -93,7 +93,7 @@
   border: none;
   border-radius: 4px;
 
-  background-color: #aca0eb;
+  background-color: #7F6AEE;
   color: white;
 
   font-size: 14px;
@@ -101,6 +101,11 @@
 
   cursor: pointer;
 }
+
+.submit-button.is-disabled {
+  background-color: #ACA0EB;
+}
+
 
 @media (max-width: 600px) {
   .post-form-container h2 {
