@@ -23,6 +23,22 @@ function showPasswordToast(message) {
     }, 2000);
 }
 
+function validatePasswordConfirm() {
+    const password = passwordInput.value;
+    const passwordConfirm = passwordConfirmInput.value;
+
+    if (password && passwordConfirm && password !== passwordConfirm) {
+        passwordConfirmHelper.textContent = "* 비밀번호가 일치하지 않습니다.";
+        return false;
+    }
+
+    passwordConfirmHelper.textContent = "";
+    return true;
+}
+
+passwordInput.addEventListener("input", validatePasswordConfirm);
+passwordConfirmInput.addEventListener("input", validatePasswordConfirm);
+
 passwordSubmitButton.addEventListener("click", async () => {
     const password = passwordInput.value;
     const passwordConfirm = passwordConfirmInput.value;
