@@ -34,9 +34,10 @@ loginButton.addEventListener("click", async () => {
     }
 
     try{
-        const result = await login(userInfo);
-        console.log("Login successful:", result);
-        location.href = "./index.html"; 
+        const response = await login(userInfo);
+        localStorage.setItem("accessToken", response.data.token.accessToken);
+
+        window.location.href = "./index.html"; 
     }catch(error){
         console.error("Error occurred while logging in:", error);
     }

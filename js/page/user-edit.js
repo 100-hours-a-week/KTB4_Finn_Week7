@@ -71,7 +71,7 @@ async function getUpdatedProfileImg() {
     const file = profileImgInput.files[0];
 
     if (!file) {
-        return userInfo?.profileImg || null;
+        return undefined;
     }
 
     const response = await registerUserProfile(file);
@@ -79,20 +79,23 @@ async function getUpdatedProfileImg() {
 }
 
 function buildUserUpdatePayload(nickname, profileImgValue) {
-    return {
-        nickname,
-        profileImg: profileImgValue
-    };
+    const payload = { nickname };
+
+    if (profileImgValue !== undefined) {
+        payload.profileImg = profileImgValue;
+    }
+
+    return payload;
 }
 
 function applyUpdatedUser(nickname, profileImgValue) {
     userInfo = {
         ...userInfo,
         nickname,
-        profileImg: profileImgValue
+        profileImg: profileImgValue ?? userInfo?.profileImg ?? null
     };
 
-    setProfileImage(profileImg, profileImgValue);
+    setProfileImage(profileImg, userInfo.profileImg);
     profileImgInput.value = "";
     clearProfilePreviewUrl();
 }
