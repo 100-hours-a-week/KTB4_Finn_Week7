@@ -3,6 +3,7 @@ import {login} from "../api/user-api.js";
 const loginButton = document.getElementById("loginButton");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
+const loginError = document.getElementById("login-error");
 
 function isLoginFormValid() {
     return Boolean(emailInput.value.trim() && emailInput.validity.valid && passwordInput.value);
@@ -39,6 +40,7 @@ loginButton.addEventListener("click", async () => {
 
         window.location.href = "./index.html"; 
     }catch(error){
+        loginError.textContent = "이메일 또는 비밀번호가 올바르지 않습니다.";
         console.error("Error occurred while logging in:", error);
     }
     

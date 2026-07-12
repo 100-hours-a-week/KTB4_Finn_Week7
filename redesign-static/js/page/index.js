@@ -9,6 +9,7 @@ const mostViewPostContainer = document.getElementById("rank-list");
 const mostViewPostCardTemplate = document.getElementById("rank-item-template");
 
 
+
 const VALID_FILTERS = ["RECENT", "POPULAR", "MINE"];
 
 const EMPTY_STATE_CONFIG = {
