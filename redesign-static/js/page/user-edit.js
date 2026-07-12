@@ -51,9 +51,11 @@ function isUserEditFormValid() {
 function updateEditButtonState() {
     const nickname = nicknameInput.value.trim();
 
-    nicknameHelper.textContent = nickname.length > MAX_NICKNAME_LENGTH
-        ? "닉네임은 최대 10글자까지 가능합니다."
-        : "";
+    if (nickname.length > MAX_NICKNAME_LENGTH) {
+        nicknameHelper.textContent = "닉네임은 최대 10글자까지 가능합니다.";
+    } else if (nickname) {
+        nicknameHelper.textContent = "";
+    }
 
     editButton.disabled = !isUserEditFormValid();
 }

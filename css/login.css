@@ -52,6 +52,18 @@ body {
   outline: none;
   border-color: #ACA0EB;
 }
+
+.form-group input[aria-invalid="true"] {
+  border-color: #e5484d;
+}
+
+.helper-text {
+  min-height: 18px;
+  margin: 6px 0 0;
+  color: #e5484d;
+  font-size: 12px;
+  line-height: 1.4;
+}
 /* 로그인 버튼 */
 .login-button {
   width: 100%;

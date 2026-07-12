@@ -1,0 +1,84 @@
+@import url("./common.css");
+
+.auth {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+}
+
+.auth-card {
+  width: min(400px, 100%);
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.auth-card h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.04em;
+}
+
+.lead {
+  margin: 12px 0 34px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.field {
+  margin: 22px 0;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  outline: 0;
+  background: var(--surface);
+}
+.field input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--focus-ring); }
+.field input[aria-invalid="true"] { border-color: var(--danger); }
+.field .helper-text { min-height: 18px; margin: 6px 0 0; font-size: 12px; }
+
+.auth-card .button {
+  width: 100%;
+}
+
+.auth-link {
+  display: block;
+  margin-top: 22px;
+  color: var(--primary);
+  text-align: center;
+  font-size: 14px;
+}
+
+.profile-upload {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #cbd2dc url("../../assets/image.png") center / cover;
+  cursor: pointer;
+}
+.profile-upload img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+@media (max-width: 480px) { .auth { padding: 28px 20px; } .auth-card { padding: 24px 20px; } .auth-card h1 { font-size: 26px; } }
+
+.profile-label {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--primary);
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+}

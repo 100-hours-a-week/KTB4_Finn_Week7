@@ -18,7 +18,7 @@ const renderPosts = (posts) => {
     posts.forEach((post) => {
         const postElement = postCardTemplate.content.cloneNode(true);
 
-        postElement.querySelector(".post-link").href = `/html/post-detail.html?postId=${post.id}`;
+        postElement.querySelector(".post-link").href = `/redesign-static/html/post-detail.html?postId=${post.id}`;
         postElement.querySelector(".post-title").textContent = post.title;
         postElement.querySelector(".post-like-count").textContent = `좋아요 ${post.likeCount}`;
         postElement.querySelector(".post-comment-count").textContent = `댓글 ${post.commentCount}`;

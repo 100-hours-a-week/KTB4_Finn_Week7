@@ -34,7 +34,9 @@
             type="password"
             id="password"
             placeholder="비밀번호를 입력하세요"
+            aria-describedby="login-error"
           />
+          <p id="login-error" class="helper-text" role="alert" aria-live="polite"></p>
         </div>
 
         <button id="loginButton" type="button" class="login-button">로그인</button>

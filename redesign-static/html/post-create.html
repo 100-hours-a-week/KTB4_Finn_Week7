@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="../css/post-create.css">
+    <script type="module" src="../js/page/post-form.js"></script>
+    <script type="module" src="../js/page/header.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">아무 말 대잔치</a>
+      <span class="brand-sub">오늘의 생각을 가볍게 나누는 공간</span>
+      <div class="profile-menu" style="margin-left: auto">
+        <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기">
+          <img id="header-profile-img" class="profile-img" src="../../assets/image.png" alt="프로필 이미지">
+        </button>
+        <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
+          <a href="user-detail.html">회원정보 수정</a>
+          <a href="password-edit.html">비밀번호 수정</a>
+          <button id="logout-button" type="button">로그아웃</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="editor-shell">
+      <form id="post-form" class="editor" novalidate>
+        <a class="back" href="index.html" aria-label="목록으로 돌아가기">‹</a>
+        <h1>게시글 작성</h1>
+        <p class="lead">좋은 이야기를 들려주세요.</p>
+
+        <div class="field">
+          <label for="post-title">제목</label>
+          <input id="post-title" type="text" placeholder="제목을 입력해주세요. (최대 26글자)" maxlength="26" required>
+          <p id="title-error" class="helper-text"></p>
+        </div>
+
+        <div class="field">
+          <label for="post-content">내용</label>
+          <textarea id="post-content" placeholder="내용을 입력해주세요." required></textarea>
+          <p id="content-error" class="helper-text"></p>
+        </div>
+
+        <div class="field">
+          <label for="post-image">이미지</label>
+          <label id="upload-label" class="upload" for="post-image">＋ 사진을 첨부하세요</label>
+          <input id="post-image" type="file" accept="image/*" hidden>
+          <div id="image-preview" class="upload-preview" hidden>
+            <img id="image-preview-img" src="" alt="첨부한 사진 미리보기">
+            <div class="upload-preview-info">
+              <strong id="image-preview-name"></strong>
+              <span id="image-preview-detail">선택한 사진</span>
+            </div>
+            <button id="image-remove-button" class="button outline small" type="button">첨부 취소</button>
+          </div>
+          <p id="image-error" class="helper-text"></p>
+        </div>
+
+        <button id="submit-button" class="button form-submit submit-button" type="button" disabled>게시글 등록</button>
+      </form>
+    </main>
+  </body>
+</html>

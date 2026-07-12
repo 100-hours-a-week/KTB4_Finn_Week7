@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>로그인</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script type="module" src="../js/page/login.js"></script>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html">아무 말 대잔치</a></header>
+    <main class="auth">
+      <form class="auth-card login-form">
+        <h1>다시 만나서 반가워요</h1>
+        <p class="lead">아무 말 대잔치에 로그인하고 이야기를 이어가세요.</p>
+        <div class="field">
+          <label for="email">이메일</label>
+          <input id="email" type="email" placeholder="이메일을 입력하세요" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="password">비밀번호</label>
+          <input id="password" type="password" placeholder="비밀번호를 입력하세요" autocomplete="current-password" required>
+        </div>
+        <button id="loginButton" class="button login-button" type="button" disabled>로그인</button>
+        <a class="auth-link signup-link" href="signup.html">회원가입</a>
+      </form>
+    </main>
+  </body>
+</html>

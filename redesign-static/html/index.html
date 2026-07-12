@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>아무 말 대잔치</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <script type="module" src="../js/page/index.js"></script>
+    <script type="module" src="../js/page/header.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">아무 말 대잔치</a>
+      <span class="brand-sub">오늘의 생각을 가볍게 나누는 공간</span>
+      <a class="button header-write-button" href="post-create.html">게시글 작성</a>
+      <div class="profile-menu">
+        <button
+          id="profile-menu-button"
+          class="profile-menu-button"
+          type="button"
+          aria-label="프로필 메뉴 열기"
+        >
+          <img
+            id="header-profile-img"
+            class="profile-img"
+            src="../../assets/image.png"
+            alt="프로필 이미지"
+          />
+        </button>
+        <nav
+          id="profile-dropdown"
+          class="profile-dropdown"
+          aria-label="프로필 메뉴"
+          hidden
+        >
+          <a href="user-detail.html">회원정보 수정</a>
+          <a href="password-edit.html">비밀번호 수정</a>
+          <button id="logout-button" type="button">로그아웃</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <aside class="sidebar">
+        <p class="nav-title">메뉴</p>
+        <a class="nav-item active" data-filter="RECENT" href="?filter=RECENT">최근 글</a>
+        <a class="nav-item" data-filter="POPULAR" href="?filter=POPULAR">인기 글</a>
+        <a class="nav-item" data-filter="MINE" href="?filter=MINE">내가 쓴 글</a>
+        <hr />
+        <p class="nav-title">내 공간</p>
+        <a class="nav-item" href="user-detail.html">내 프로필</a>
+      </aside>
+
+      <section class="feed">
+        <h1>아무 말 대잔치</h1>
+        <p class="lead">
+          오늘 있었던 일, 좋아하는 것, 떠오른 생각을 자유롭게 남겨보세요.
+        </p>
+        <nav class="tabs" aria-label="게시글 정렬">
+          <a class="active" data-filter="RECENT" href="?filter=RECENT">최근 글</a>
+          <a data-filter="POPULAR" href="?filter=POPULAR">인기 글</a>
+          <a data-filter="MINE" href="?filter=MINE">내가 쓴 글</a>
+        </nav>
+
+        <div id="post-list-container">
+          <article class="post-card">
+            <a class="post-link" href="post-detail.html">
+              <div class="post-author">
+                <div class="author-img">
+                  <img
+                    class="post-author-img"
+                    src="../../assets/image.png"
+                    alt="작성자 프로필 이미지"
+                  />
+                </div>
+                <div>
+                  <strong class="post-author-nickname">정지호</strong>
+                  <time class="post-created-at">2시간 전</time>
+                </div>
+              </div>
+              <div class="post-content">
+                
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <h2>많이 본 게시글</h2>
+        <div id="rank-list" class="rank-list">
+
+        </div>
+        <div class="notice">
+          <h2>게시판 안내</h2>
+          <p>서로를 존중하는 대화를 함께 만들어가요.</p>
+        </div>
+      </aside>
+    </main>
+
+    <template id="post-card-template">
+      <article class="post-card">
+        <a class="post-link" href="">
+          <div class="post-author">
+            <div class="author-img">
+              <img class="post-author-img" src="" alt="작성자 프로필 이미지" />
+            </div>
+            <div>
+              <strong class="post-author-nickname"></strong>
+              <time class="post-created-at"></time>
+            </div>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">제목</h3>
+            <img
+              class="post-content-img"
+              src="../../assets/post_img.png"
+              alt="게시글 이미지"
+            />
+            <p class="post-summary">
+              본문요약
+            </p>
+            <div class="post-info">
+              <span class="post-like-count">좋아요 128</span>
+              <span class="post-comment-count">댓글 24</span>
+              <span class="post-view-count">조회수 126</span>
+            </div>
+          </div>
+        </a>
+      </article>
+    </template>
+
+    <template id="rank-item-template">
+      <a class="rank-item" href="">
+        <b class="rank"></b>
+        <div>
+          <strong class="rank-title"></strong>
+          <span class="rank-author"></span>
+        </div>
+      </a>
+    </template>
+  </body>
+</html>

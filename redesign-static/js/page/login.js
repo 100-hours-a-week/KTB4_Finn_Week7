@@ -3,22 +3,9 @@ import {login} from "../api/user-api.js";
 const loginButton = document.getElementById("loginButton");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
-const loginError = document.getElementById("login-error");
-
-function clearLoginError() {
-    loginError.textContent = "";
-    emailInput.removeAttribute("aria-invalid");
-    passwordInput.removeAttribute("aria-invalid");
-}
-
-function showLoginError() {
-    loginError.textContent = "이메일 또는 비밀번호가 올바르지 않습니다.";
-    emailInput.setAttribute("aria-invalid", "true");
-    passwordInput.setAttribute("aria-invalid", "true");
-}
 
 function isLoginFormValid() {
-    return Boolean(emailInput.value.trim() && passwordInput.value);
+    return Boolean(emailInput.value.trim() && emailInput.validity.valid && passwordInput.value);
 }
 
 function updateLoginButtonState() {
@@ -26,10 +13,7 @@ function updateLoginButtonState() {
 }
 
 [emailInput, passwordInput].forEach((input) => {
-    input.addEventListener("input", () => {
-        clearLoginError();
-        updateLoginButtonState();
-    });
+    input.addEventListener("input", updateLoginButtonState);
 });
 
 updateLoginButtonState();
@@ -56,7 +40,6 @@ loginButton.addEventListener("click", async () => {
         window.location.href = "./index.html"; 
     }catch(error){
         console.error("Error occurred while logging in:", error);
-        showLoginError();
     }
     
     console.log("Login button clicked");

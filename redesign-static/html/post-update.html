@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" href="../css/post-update.css">
+    <script type="module" src="../js/page/post-form.js"></script>
+    <script type="module" src="../js/page/header.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">아무 말 대잔치</a>
+      <span class="brand-sub">오늘의 생각을 가볍게 나누는 공간</span>
+      <div class="profile-menu" style="margin-left: auto">
+        <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기"><img id="header-profile-img" class="profile-img" src="../../assets/image.png" alt="프로필 이미지"></button>
+        <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
+          <a href="user-detail.html">회원정보 수정</a>
+          <a href="password-edit.html">비밀번호 수정</a>
+          <button id="logout-button" type="button">로그아웃</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="editor-shell">
+      <form id="post-form" class="editor" novalidate>
+        <a class="back" href="post-detail.html" aria-label="게시글 상세로 돌아가기">‹</a>
+        <h1>게시글 수정</h1>
+        <p class="lead">게시글 내용을 수정할 수 있습니다.</p>
+
+        <div class="field">
+          <label for="post-title">제목</label>
+          <input id="post-title" type="text" maxlength="26" required>
+          <p id="title-error" class="helper-text"></p>
+        </div>
+
+        <div class="field">
+          <label for="post-content">내용</label>
+          <textarea id="post-content" required></textarea>
+          <p id="content-error" class="helper-text"></p>
+        </div>
+
+        <div class="field">
+          <label for="post-image">이미지</label>
+          <label id="upload-label" class="upload" for="post-image">＋ 사진을 첨부하거나 변경하세요</label>
+          <input id="post-image" type="file" accept="image/*" hidden>
+          <div id="image-preview" class="upload-preview" hidden>
+            <img id="image-preview-img" src="" alt="첨부한 사진 미리보기">
+            <div class="upload-preview-info">
+              <strong id="image-preview-name"></strong>
+              <span id="image-preview-detail">첨부된 사진</span>
+            </div>
+            <button id="image-remove-button" class="button outline small" type="button">이미지 삭제</button>
+          </div>
+          <p id="image-error" class="helper-text"></p>
+        </div>
+
+        <button id="submit-button" class="button form-submit" type="button" disabled>수정 완료</button>
+      </form>
+    </main>
+  </body>
+</html>

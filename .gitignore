@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Oh My Design tooling
+/.agents/
+/.claude/
+/.codex/
+/.cursor/
+/.opencode/
+/OH_MY_DESIGN_GUIDE.md
+
+# Oh My Design project metadata and generated shims
+/redesign-static/.omd/
+/redesign-static/.cursor/
+/redesign-static/DESIGN.md
+/redesign-static/AGENTS.md
+/redesign-static/CLAUDE.md
