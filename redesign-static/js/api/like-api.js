@@ -6,8 +6,8 @@ export function likePost(postId){
     });
 }
 
-export function unlikePost(likeId){
-    return apiRequest(`/likes/${likeId}`, {
+export function unlikePost(postId){
+    return apiRequest(`/posts/${postId}/like`, {
         method: `DELETE`
     });
 }

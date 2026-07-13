@@ -99,8 +99,7 @@ const renderMostViewPosts = (posts) => {
         postElement.querySelector(".rank").textContent = index + 1;
         postElement.querySelector(".rank-title").textContent = post.title;
         postElement.querySelector(".rank-author").textContent = post.username;
-        postElement.querySelector(".rank-item").href =
-            `post-detail.html?postId=${post.id}`;
+        postElement.querySelector(".rank-item").href =`post-detail.html?postId=${post.id}`;
 
         mostViewPostContainer.appendChild(postElement);
     });
@@ -116,6 +115,7 @@ const init = async () => {
 
     renderPosts(response.data.posts, filter);
     renderMostViewPosts(response.data.mostViewPosts);
+    console.log("mostViewPosts:", response.data.mostViewPosts);
   } catch (error) {
     console.error(error);
   }

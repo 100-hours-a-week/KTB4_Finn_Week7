@@ -15,7 +15,7 @@ const postDeleteCancelButton = document.getElementById("post-delete-cancel-butto
 const postDeleteConfirmButton = document.getElementById("post-delete-confirm-button");
 
 
-let currentLikeId = null;
+let isLiked = null;
 
 function renderLikeState(isLiked) {
     likeButton.classList.toggle("is-liked", isLiked);
@@ -66,21 +66,17 @@ likeButton.addEventListener("click", async () => {
 
     likeButton.disabled = true;
     try {
-        if(currentLikeId !== null){
-            await unlikePost(currentLikeId);
-
-            likeCount.textContent = Number(likeCount.textContent) -1;
-            currentLikeId = null;
-            renderLikeState(false);
-        }
-        else{
-            const response = await likePost(postId);
-
-            likeCount.textContent = Number(likeCount.textContent) + 1;
-            currentLikeId = response.data.id;
-            renderLikeState(true);
-        }
+        let response;
+        if(isLiked){
+            response = await unlikePost(postId);
             
+        }else{
+            response = await likePost(postId);
+        }
+        console.log("like response:", response.data);
+        isLiked = response.data.isLiked;
+        likeCount.textContent = response.data.likeCount;
+        renderLikeState(isLiked);
     }
      catch (error) {
         console.error("Error toggling like:", error);
@@ -112,9 +108,9 @@ function renderPostDetail(post) {
     document.getElementById("post-author").textContent = authorName;
     setProfileImage(document.getElementById("post-author-img"), post.profileImg);
 
-    currentLikeId = post.like?.id ?? null;
-
-    renderLikeState(post.like !== null);
+    isLiked = post.like !== null;
+    
+    renderLikeState(isLiked);
 
 }
 
