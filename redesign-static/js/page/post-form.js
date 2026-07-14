@@ -1,4 +1,4 @@
-// 게시글 작성/수정 화면 전용 스크립트가 필요할 때 이 파일에서 확장합니다.
+// 기록 업로드/수정 화면 전용 스크립트가 필요할 때 이 파일에서 확장합니다.
 import { createPost, getPostById, updatePost } from "../api/post-api.js";
 import { registerPostImage } from "../api/image-api.js";
 

@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>아무 말 대잔치</title>
+    <title>FOCAL</title>
     <link rel="stylesheet" href="../css/index.css" />
     <script type="module" src="../js/page/index.js"></script>
     <script type="module" src="../js/page/header.js"></script>
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="index.html">아무 말 대잔치</a>
-      <span class="brand-sub">오늘의 생각을 가볍게 나누는 공간</span>
-      <a class="button header-write-button" href="post-create.html">게시글 작성</a>
+      <a class="brand" href="index.html">FOCAL</a>
+      <span class="brand-sub">사진과 영상을 기록하는 사람들의 피드</span>
+      <a class="button header-write-button" href="post-create.html">+ 업로드</a>
       <div class="profile-menu">
         <button
           id="profile-menu-button"
@@ -42,24 +42,22 @@
 
     <main class="page">
       <aside class="sidebar">
-        <p class="nav-title">메뉴</p>
-        <a class="nav-item active" data-filter="RECENT" href="?filter=RECENT">최근 글</a>
-        <a class="nav-item" data-filter="POPULAR" href="?filter=POPULAR">인기 글</a>
-        <a class="nav-item" data-filter="MINE" href="?filter=MINE">내가 쓴 글</a>
+        <p class="nav-title">피드</p>
+        <a class="nav-item active" data-filter="RECENT" href="?filter=RECENT">최근 피드</a>
+        <a class="nav-item" data-filter="POPULAR" href="?filter=POPULAR">인기 기록</a>
+        <a class="nav-item" data-filter="MINE" href="?filter=MINE">내 기록</a>
         <hr />
         <p class="nav-title">내 공간</p>
         <a class="nav-item" href="user-detail.html">내 프로필</a>
       </aside>
 
       <section class="feed">
-        <h1>아무 말 대잔치</h1>
-        <p class="lead">
-          오늘 있었던 일, 좋아하는 것, 떠오른 생각을 자유롭게 남겨보세요.
-        </p>
-        <nav class="tabs" aria-label="게시글 정렬">
-          <a class="active" data-filter="RECENT" href="?filter=RECENT">최근 글</a>
-          <a data-filter="POPULAR" href="?filter=POPULAR">인기 글</a>
-          <a data-filter="MINE" href="?filter=MINE">내가 쓴 글</a>
+        <h1>오늘의 초점을 공유해주세요</h1>
+        <p class="lead">당신의 시선이 머문 장면들을 모아보세요</p>
+        <nav class="tabs" aria-label="피드 정렬">
+          <a class="active" data-filter="RECENT" href="?filter=RECENT">전체</a>
+          <a data-filter="POPULAR" href="?filter=POPULAR">인기 기록</a>
+          <a data-filter="MINE" href="?filter=MINE">내 기록</a>
         </nav>
 
         <div id="post-list-container">
@@ -87,13 +85,13 @@
       </section>
 
       <aside class="side-panel">
-        <h2>많이 본 게시글</h2>
+        <h2>인기 게시물</h2>
         <div id="rank-list" class="rank-list">
 
         </div>
         <div class="notice">
-          <h2>게시판 안내</h2>
-          <p>서로를 존중하는 대화를 함께 만들어가요.</p>
+          <h2>인기 태그</h2>
+          
         </div>
       </aside>
     </main>
@@ -115,15 +113,15 @@
             <img
               class="post-content-img"
               src="../../assets/post_img.png"
-              alt="게시글 이미지"
+              alt="기록 이미지"
             />
             <p class="post-summary">
               본문요약
             </p>
             <div class="post-info">
-              <span class="post-like-count">좋아요 128</span>
+              <span class="post-like-count">♡ 128</span>
               <span class="post-comment-count">댓글 24</span>
-              <span class="post-view-count">조회수 126</span>
+              <span class="post-view-count">↗ 126</span>
             </div>
           </div>
         </a>

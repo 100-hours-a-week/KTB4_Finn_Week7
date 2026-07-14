@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>게시글 수정</title>
+    <title>기록 수정</title>
     <link rel="stylesheet" href="../css/post-update.css">
     <script type="module" src="../js/page/post-form.js"></script>
     <script type="module" src="../js/page/header.js"></script>
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="index.html">아무 말 대잔치</a>
-      <span class="brand-sub">오늘의 생각을 가볍게 나누는 공간</span>
-      <div class="profile-menu" style="margin-left: auto">
+      <a class="brand" href="index.html">FOCAL</a>
+      <span class="brand-sub">사진과 영상을 기록하는 사람들의 피드</span>
+      <div class="profile-menu profile-menu-end">
         <button id="profile-menu-button" class="profile-menu-button" type="button" aria-label="프로필 메뉴 열기"><img id="header-profile-img" class="profile-img" src="../../assets/image.png" alt="프로필 이미지"></button>
         <nav id="profile-dropdown" class="profile-dropdown" aria-label="프로필 메뉴" hidden>
           <a href="user-detail.html">회원정보 수정</a>
@@ -24,9 +24,9 @@
 
     <main class="editor-shell">
       <form id="post-form" class="editor" novalidate>
-        <a class="back" href="post-detail.html" aria-label="게시글 상세로 돌아가기">‹</a>
-        <h1>게시글 수정</h1>
-        <p class="lead">게시글 내용을 수정할 수 있습니다.</p>
+        <a class="back" href="post-detail.html" aria-label="기록 상세로 돌아가기">‹</a>
+        <h1>기록 수정</h1>
+        <p class="lead">업로드한 장면의 제목과 설명을 다듬을 수 있습니다.</p>
 
         <div class="field">
           <label for="post-title">제목</label>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="field">
-          <label for="post-content">내용</label>
+          <label for="post-content">설명</label>
           <textarea id="post-content" required></textarea>
           <p id="content-error" class="helper-text"></p>
         </div>

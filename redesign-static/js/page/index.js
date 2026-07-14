@@ -14,16 +14,16 @@ const VALID_FILTERS = ["RECENT", "POPULAR", "MINE"];
 
 const EMPTY_STATE_CONFIG = {
   RECENT: {
-    title: "아직 올라온 이야기가 없어요.",
-    description: "오늘 떠오른 생각을 가장 먼저 나눠보세요.",
+    title: "아직 올라온 기록이 없어요.",
+    description: "오늘의 장면을 가장 먼저 업로드해보세요.",
   },
   POPULAR: {
-    title: "아직 인기 게시글이 없어요.",
-    description: "게시글에 좋아요와 댓글을 남겨보세요.",
+    title: "아직 인기 기록이 없어요.",
+    description: "마음에 드는 장면에 좋아요와 댓글을 남겨보세요.",
   },
   MINE: {
-    title: "작성한 게시글이 없어요.",
-    description: "첫 번째 이야기를 작성해보세요.",
+    title: "업로드한 기록이 없어요.",
+    description: "첫 번째 장면을 업로드해보세요.",
   },
 };
 
@@ -60,7 +60,7 @@ const renderPosts = (posts, filter) => {
         <strong>${emptyState.title}</strong>
         <p>${emptyState.description}</p>
         <a class="empty-post-action" href="post-create.html">
-          게시글 작성하기
+          기록 업로드하기
         </a>
       </div>
     `;
@@ -74,9 +74,9 @@ const renderPosts = (posts, filter) => {
         postElement.querySelector(".post-title").textContent = post.title;
         postElement.querySelector(".post-summary").textContent = post.content;
         setOptionalImage(postElement.querySelector(".post-content-img"), post.contentImg);
-        postElement.querySelector(".post-like-count").textContent = `좋아요 ${post.likeCount}`;
+        postElement.querySelector(".post-like-count").textContent = `♡ ${post.likeCount}`;
         postElement.querySelector(".post-comment-count").textContent = `댓글 ${post.commentCount}`;
-        postElement.querySelector(".post-view-count").textContent = `조회수 ${post.viewCount}`;
+        postElement.querySelector(".post-view-count").textContent = `↗ ${post.viewCount}`;
         postElement.querySelector(".post-created-at").textContent = formatDateTime(post.createdAt);
         setProfileImage(postElement.querySelector(".post-author-img"), post.profileImg);
         postElement.querySelector(".post-author-nickname").textContent = post.nickname;

@@ -148,6 +148,7 @@
 
 .like-count-button.is-liked .like-icon {
   color: var(--primary);
+  font-size: 29px;
 }
 
 .comment-form {

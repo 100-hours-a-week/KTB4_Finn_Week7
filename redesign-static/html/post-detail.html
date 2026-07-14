@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>게시글 상세</title>
+    <title>기록 상세</title>
     <link rel="stylesheet" href="../css/post-detail.css" />
     <script type="module" src="../js/page/post-detail.js"></script>
     <script type="module" src="../js/page/comment.js"></script>
@@ -11,9 +11,9 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="index.html">아무 말 대잔치</a>
-      <span class="brand-sub">오늘의 생각을 가볍게 나누는 공간</span>
-      <div class="profile-menu" style="margin-left: auto">
+      <a class="brand" href="index.html">FOCAL</a>
+      <span class="brand-sub">사진과 영상을 기록하는 사람들의 피드</span>
+      <div class="profile-menu profile-menu-end">
         <button
           id="profile-menu-button"
           class="profile-menu-button"
@@ -79,7 +79,7 @@
           <img
             id="post-image"
             class="post-media post-image"
-            alt="게시글 이미지"
+            alt="기록 이미지"
             hidden
           />
           <p id="post-content">
@@ -87,7 +87,7 @@
             좋은 하루였습니다.
           </p>
         </section>
-        <section class="post-stats" aria-label="게시글 통계">
+        <section class="post-stats" aria-label="기록 통계">
           <button
             id="post-like-button"
             class="post-metric like-count-button"
@@ -120,7 +120,7 @@
       <section class="comment-form comment-write-box">
         <textarea
           id="comment-input"
-          placeholder="댓글을 남겨주세요!"
+          placeholder="이 장면에 대한 댓글을 남겨주세요."
           required
         ></textarea>
         <div class="comment-submit comment-submit-row">
@@ -227,7 +227,7 @@
     </div>
     <div id="post-delete-modal" class="modal-overlay" hidden>
       <div class="delete-modal">
-        <h2>게시글을 삭제하시겠습니까?</h2>
+        <h2>기록을 삭제하시겠습니까?</h2>
         <p>삭제한 내용은 복구할 수 없습니다.</p>
         <div class="delete-modal-actions">
           <button id="post-delete-cancel-button" type="button">취소</button
