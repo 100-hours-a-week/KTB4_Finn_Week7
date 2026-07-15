@@ -8,6 +8,7 @@ const passwordConfirmHelper = document.getElementById("password-confirm-error");
 const passwordSuccessToast = document.getElementById("password-success-toast");
 const passwordMessageToast = document.getElementById("password-message");
 let toastTimerId = null;
+let isSubmitting = false;
 
 function showPasswordToast(message) {
     passwordMessageToast.textContent = message;
@@ -39,7 +40,7 @@ function validatePasswordConfirm() {
 function updatePasswordSubmitButtonState() {
     const password = passwordInput.value;
     const passwordConfirm = passwordConfirmInput.value;
-    passwordSubmitButton.disabled = !(password && passwordConfirm && password === passwordConfirm);
+    passwordSubmitButton.disabled = !(password && passwordConfirm && password === passwordConfirm) || isSubmitting;
 }
 
 [passwordInput, passwordConfirmInput].forEach((input) => {
@@ -52,6 +53,11 @@ function updatePasswordSubmitButtonState() {
 updatePasswordSubmitButtonState();
 
 passwordSubmitButton.addEventListener("click", async () => {
+
+    if(isSubmitting) {
+        return;
+    }
+
     updatePasswordSubmitButtonState();
     if (passwordSubmitButton.disabled) {
         return;
@@ -80,11 +86,16 @@ passwordSubmitButton.addEventListener("click", async () => {
         return;
     }
 
+    isSubmitting = true;
+    updatePasswordSubmitButtonState();
+
     try{
         await updatePassword({ password: password });
         showPasswordToast("수정완료");
     }catch(error){
         console.log("변경실패: ",error);
+        isSubmitting = false;
+        updatePasswordSubmitButtonState();
         showPasswordToast("수정실패");
     }
 });

@@ -18,6 +18,7 @@ const profileError = document.getElementById("profile-error");
 
 const MAX_NICKNAME_LENGTH = 10;
 let profilePreviewUrl = null;
+let isSubmitting = false;
 
 function isSignupFormValid() {
     const nickname = nicknameInput.value.trim();
@@ -45,7 +46,7 @@ function updateSignupButtonState() {
 
     nicknameError.textContent = isNicknameTooLong ? "닉네임은 최대 10글자까지 가능합니다." : "";
     passwordCheckError.textContent = isPasswordMismatch ? "비밀번호가 일치하지 않습니다." : "";
-    signupButton.disabled = !isSignupFormValid();
+    signupButton.disabled = !isSignupFormValid() || isSubmitting;
 }
 
 [nicknameInput, passwordInput, passwordCheckInput].forEach((input) => {
@@ -123,6 +124,10 @@ async function uploadProfileImageIfSelected() {
 }
 
 signupButton.addEventListener("click", async () => {
+
+    if(isSubmitting) {
+        return;
+    }
     updateSignupButtonState();
 
     if (signupButton.disabled) {
@@ -131,12 +136,18 @@ signupButton.addEventListener("click", async () => {
 
     let profileImgUrl = null;
 
+    isSubmitting = true;
+    updateSignupButtonState();
+
+
     try {
         profileError.textContent = "";
         profileImgUrl = await uploadProfileImageIfSelected();
     } catch (error) {
         profileError.textContent = "이미지 등록에 실패했습니다.";
         console.log("이미지 등록 실패: ", error);
+        isSubmitting = false;
+        updateSignupButtonState();
         return;
     }
 
@@ -156,6 +167,8 @@ signupButton.addEventListener("click", async () => {
             emailError.textContent = "이미 사용 중인 이메일입니다.";
         }
 
+        isSubmitting = false;
+        updateSignupButtonState();
         console.error("Error occurred while signing up:", error);
     }
 

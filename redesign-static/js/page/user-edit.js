@@ -18,6 +18,8 @@ const editSuccessToast = document.getElementById("edit-success-toast");
 const editMessageToast = document.getElementById("edit-message");
 let toastTimerId = null;
 let profilePreviewUrl = null;
+let isSubmitting = false;
+
 const MAX_NICKNAME_LENGTH = 10;
 
 function openWithdrawModal() {
@@ -57,7 +59,7 @@ function updateEditButtonState() {
         nicknameHelper.textContent = "";
     }
 
-    editButton.disabled = !isUserEditFormValid();
+    editButton.disabled = !isUserEditFormValid() || isSubmitting;
 }
 
 function clearProfilePreviewUrl() {
@@ -119,6 +121,10 @@ profileImgInput.addEventListener("change", () => {
 updateEditButtonState();
 
 editButton.addEventListener("click", async () => {
+
+    if(isSubmitting) {
+        return;
+    }
     const nickname = nicknameInput.value.trim();
 
     updateEditButtonState();
@@ -133,6 +139,9 @@ editButton.addEventListener("click", async () => {
         return;
     }
 
+    isSubmitting = true;
+    updateEditButtonState();
+
     try{
         const profileImgValue = await getUpdatedProfileImg();
         const userData = buildUserUpdatePayload(nickname, profileImgValue);
@@ -144,6 +153,9 @@ editButton.addEventListener("click", async () => {
     }catch(error){
         console.log("회원정보수정 실패 : ", error);
         showEditToast("수정실패");
+    }finally{
+        isSubmitting = false;
+        updateEditButtonState();
     }
 
 });

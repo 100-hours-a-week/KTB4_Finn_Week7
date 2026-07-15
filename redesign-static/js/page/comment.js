@@ -13,15 +13,19 @@ const commentDeleteConfirmButton = document.getElementById("comment-delete-confi
 const commentInput = document.getElementById("comment-input");
 const commentSubmitButton = document.getElementById("comment-submit-button");
 let selectedDeleteCommentId = null;
+let isSubmitting = false;
 
 function updateCommentSubmitButtonState() {
-    commentSubmitButton.disabled = !commentInput.value.trim();
+    commentSubmitButton.disabled = !commentInput.value.trim() || isSubmitting;
 }
 
 commentInput.addEventListener("input", updateCommentSubmitButtonState);
 updateCommentSubmitButtonState();
 
 commentSubmitButton.addEventListener("click", async () => {
+    if(isSubmitting) {
+        return;
+    }
 
     const comment = commentInput.value.trim();
 
@@ -35,10 +39,14 @@ commentSubmitButton.addEventListener("click", async () => {
         content : comment
     }
 
+    isSubmitting = true;
+    updateCommentSubmitButtonState();
     try{
         const response = await registerComment(commentInfo);
         window.location.href="/redesign-static/html/post-detail.html?postId="+postId;
     }catch(error){
+        isSubmitting = false;
+        updateCommentSubmitButtonState();
         console.log("error : ", error)
     }
 
